@@ -24,9 +24,9 @@ public class Person {
                     person.marry(this);
                 } else {
                     this.spouse = person;
-                    System.out.println("Поздравляем Вас, "+ this.name + "! теперь " + this.spouse.name + " ваш супруг/супруга");
+                    System.out.println("Поздравляем Вас, " + this.name + "! теперь " + this.spouse.name + " ваш супруг/супруга");
                     person.spouse = this;
-                    System.out.println("Поздравляем Вас, "+ person.name + "! теперь " + person.spouse.name + " ваш супруг/супруга");
+                    System.out.println("Поздравляем Вас, " + person.name + "! теперь " + person.spouse.name + " ваш супруг/супруга");
                 }
             }
 
@@ -40,13 +40,13 @@ public class Person {
     public boolean divorce() {
         if (this.spouse != null) {
             spouse.spouse = null;
-            System.out.println("Поздравляем Вас, "+ spouse.name + "! Теперь вы свободный человек");
+            System.out.println("Поздравляем Вас, " + spouse.name + "! Теперь вы свободный человек");
             this.spouse = null;
-            System.out.println("Поздравляем Вас, "+ this.name + "! теперь вы свободный человек");
+            System.out.println("Поздравляем Вас, " + this.name + "! теперь вы свободный человек");
 
             return true;
         } else {
-            System.out.println("У " + this.name+ " и так нет супруга/супругии");
+            System.out.println("У " + this.name + " и так нет супруга/супругии");
             return false;
         }
     }
