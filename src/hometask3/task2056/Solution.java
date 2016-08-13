@@ -1,4 +1,4 @@
-package task2056;
+package hometask3.task2056;
 
 import java.util.*;
 

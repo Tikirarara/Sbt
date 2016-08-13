@@ -1,4 +1,4 @@
-package person;
+package hometask2.person;
 
 /* Это моя реализация методов в классе Person
 */
