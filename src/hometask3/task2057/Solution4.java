@@ -1,10 +1,7 @@
 package hometask3.task2057;
-
 /*
 faster
 */
-
-
 import java.util.*;
 
 public class Solution4 {

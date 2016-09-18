@@ -31,7 +31,7 @@ public class Solution {
 
                 if (array[p] == max) {
 
-                    array[p] = max/2;
+                    array[p] = max / 2;
                 }
             }
         }

@@ -12,7 +12,7 @@ public class CountMapImpl<T> implements CountMap<T> {
     @Override
     public void add(T t) {
         if (map.containsKey(t)) {
-            map.put(t, getCount(t)+1);
+            map.put(t, getCount(t) + 1);
         } else {
             map.put(t, 1);
         }
@@ -38,7 +38,7 @@ public class CountMapImpl<T> implements CountMap<T> {
     @Override
     public void addAll(CountMap source) {
         Set<T> set = source.toMap().keySet();
-        for(T key : set) {
+        for (T key : set) {
             if (map.containsKey(key)) {
                 map.put(key, this.getCount(key) + source.getCount(key));
             } else {
@@ -55,9 +55,9 @@ public class CountMapImpl<T> implements CountMap<T> {
     @Override
     public void toMap(Map destination) {
         Set<T> set = this.map.keySet();
-        for(T key : set) {
+        for (T key : set) {
             if (destination.containsKey(key)) {
-                destination.put(key, (int)destination.get(key)+this.getCount(key));
+                destination.put(key, (int) destination.get(key) + this.getCount(key));
             } else {
                 destination.put(key, this.getCount(key));
             }
