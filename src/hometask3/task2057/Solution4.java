@@ -1,6 +1,9 @@
 package hometask3.task2057;
 
-//Best&simple
+/*
+faster
+*/
+
 
 import java.util.*;
 

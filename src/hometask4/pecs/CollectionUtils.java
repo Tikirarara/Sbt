@@ -1,6 +1,7 @@
 package hometask4.pecs;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -9,38 +10,58 @@ public class CollectionUtils {
         destination.addAll(source);
     }
 
-    public static<T> List<? extends T> newArrayList() {
+    public static <T> List<T> newArrayList() {
         return new ArrayList<>();
     }
 
-    public static int indexOf(List source, Object o) {
-
-        return 0;
+    public static <T> int indexOf(List<? extends T> source, T o) {
+        return source.indexOf(o);
     }
 
-    public static List limit(List source, int size) {
-        return null;
+    public static <T> List limit(List<? extends T> source, int size) {
+        return source.subList(0, size - 1);
     }
 
-    public static void add(List source, Object o) {
+    public static <T> void add(List<? super T> source, T o) {
+        source.add(o);
     }
 
-    public static void removeAll(List removeFrom, List c2) {
+    public static <T> void removeAll(List<? super T> removeFrom, List<? extends T> c2) {
+        removeFrom.removeAll(c2);
     }
 
-    public static boolean containsAll(List c1, List c2) {
-        return true;
+    //true если первый лист содержит все элементы второго
+    public static <T> boolean containsAll(List<T> c1, List<? extends T> c2) {
+        return c1.containsAll(c2);
     }
 
-    public static boolean containsAny(List c1, List c2) {
-        return true;
+    //true если первый лист содержит хотя-бы 1 второго
+    public static <T> boolean containsAny(List<? super T> c1, List<? extends T> c2) {
+        for(T element:c2) {
+            if (c1.contains(element)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public static List range(List list, Object min, Object max) {
-        return null;
+    /*Нужно создать копию листа, отсортировать его, и вернуть sublist,
+    в котором находятся элементы в диапазоне от min до max.
+    Элементы сравнивать через Comparable.
+    Пример range(Arrays.asList(8,1,3,5,6, 4), 3, 6) вернет {3,4,5,6}*/
+    public static <T extends Comparable<? super T>> List range(List<? extends T> list, T min, T max) {
+        List<T> copy = new ArrayList<>(list);
+        Collections.sort(copy);
+        return list.subList(copy.indexOf(min), copy.lastIndexOf(max)+1);
     }
 
-    public static List range(List list, Object min, Object max, Comparator comparator) {
-        return null;
+    /*Нужно создать копию листа, отсортировать его, и вернуть sublist,
+    в котором находятся элементы в диапазоне от min до max.
+    Элементы сравнивать через Comparator.
+    Прмер range(Arrays.asList(8,1,3,5,6, 4), 3, 6) вернет {3,4,5,6}*/
+    public static <T> List range(List<? extends T> list, T min, T max, Comparator<? super T> comparator) {
+        List<T> copy = new ArrayList<>(list);
+        copy.sort(comparator);
+        return copy.subList(copy.indexOf(min), copy.lastIndexOf(max)+1);
     }
 }
